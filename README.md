@@ -1,2 +1,2 @@
-# Terraform-recipes
-Terraform Infrastructure-as-Code recipes
+# Terraform-IaC
+##Terraform Infrastructure-as-Code for AWS cloud provisioning
