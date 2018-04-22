@@ -1,1 +1,2 @@
 *terraform..tfvars
+*.terraform/plugins/darwin_amd64
