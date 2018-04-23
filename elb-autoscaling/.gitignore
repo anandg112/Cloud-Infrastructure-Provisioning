@@ -1,2 +1,3 @@
 *terraform.tfvars
-
+*.terraform/plugins/darwin_amd64/
+*mykey
