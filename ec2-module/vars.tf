@@ -9,3 +9,5 @@ variable "owner" {
 variable "team" {
   default = "Innov"
 }
+
+variable "key_name" {}
