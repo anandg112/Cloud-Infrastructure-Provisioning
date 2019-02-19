@@ -9,3 +9,7 @@ output "instance_id" {
 output "instance_arn" {
   value = "${aws_instance.web.arn}"
 }
+
+output "activation_code" {
+  value = "${aws_ssm_activation.activate-ec2.activation_code}"
+}

@@ -11,3 +11,11 @@ variable "team" {
 }
 
 variable "key_name" {}
+
+variable "GATLING_VERSION" {
+  default = "2.3.1"
+}
+
+variable "JAVA_HOME" {
+  default = "/usr/java/default"
+}

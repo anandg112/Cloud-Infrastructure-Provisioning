@@ -55,6 +55,29 @@ resource "aws_security_group" "allow_ssh" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  egress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+data "template_file" "user_data" {
+  template = "${file("${path.module}/user-data.tpl")}"
+
+  vars = {
+    GATLING_VERSION = "${var.GATLING_VERSION}"
+    JAVA_HOME       = "${var.JAVA_HOME}"
+  }
 }
 
 resource "aws_instance" "web" {
@@ -63,6 +86,7 @@ resource "aws_instance" "web" {
   key_name               = "${var.key_name}"
   subnet_id              = "${aws_subnet.my_subnet.id}"
   vpc_security_group_ids = ["${aws_security_group.allow_ssh.id}"]
+  user_data              = "${data.template_file.user_data.rendered}"
 
   tags = {
     owner = "${var.owner}"
