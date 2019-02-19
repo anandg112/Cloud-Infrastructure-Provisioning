@@ -36,8 +36,8 @@ resource "aws_subnet" "my_subnet" {
 }
 
 resource "aws_security_group" "allow_all" {
-  name        = "allow_all"
-  description = "Allow all inbound traffic"
+  name        = "allow_ssh"
+  description = "Allow ssh inbound traffic"
   vpc_id      = "${aws_vpc.my_vpc.id}"
 
   ingress {
@@ -56,11 +56,12 @@ resource "aws_security_group" "allow_all" {
 }
 
 resource "aws_instance" "web" {
-  ami                    = "${data.aws_ami.amazon-linux-2.id}"
-  instance_type          = "t2.small"
-  key_name               = "${var.key_name}"
-  subnet_id              = "${aws_subnet.my_subnet.id}"
-  vpc_security_group_ids = ["${var.aws_security_group.id}"]
+  ami           = "${data.aws_ami.amazon-linux-2.id}"
+  instance_type = "t2.small"
+  key_name      = "${var.key_name}"
+  subnet_id     = "${aws_subnet.my_subnet.id}"
+
+  #   vpc_security_group_ids = ["${var.aws_security_group.id}"]
 
   tags = {
     owner = "${var.owner}"
