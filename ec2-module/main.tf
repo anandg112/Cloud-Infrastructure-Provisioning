@@ -14,6 +14,8 @@ data "aws_ami" "amazon-linux-2" {
     name   = "name"
     values = ["amzn2-ami-hvm*"]
   }
+
+  name_regex = "035*"
 }
 
 resource "aws_vpc" "my_vpc" {
