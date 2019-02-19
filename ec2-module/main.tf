@@ -19,6 +19,7 @@ data "aws_ami" "amazon-linux-2" {
 resource "aws_instance" "web" {
   ami           = "${data.aws_ami.amazon-linux-2.id}"
   instance_type = "t2.small"
+  key_name      = "${var.key_name}"
 
   tags = {
     owner = "${var.owner}"

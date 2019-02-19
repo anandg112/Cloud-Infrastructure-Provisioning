@@ -1,9 +1,10 @@
 variable "AWS_REGION" {
-   default = "us-east-1"
+  default = "us-east-1"
 }
 
 variable "AMIS" {
   type = "map"
+
   default = {
     us-east-1 = "ami-13be557e"
     us-west-2 = "ami-06b94666"
@@ -12,10 +13,9 @@ variable "AMIS" {
 }
 
 variable "PATH_TO_PRIVATE_KEY" {
-   default = "mykey"
+  default = "mykey"
 }
 
 variable "PATH_TO_PUBLIC_KEY" {
   default = "mykey.pub"
 }
-
