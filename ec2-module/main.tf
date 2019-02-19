@@ -16,6 +16,15 @@ data "aws_ami" "amazon-linux-2" {
   }
 }
 
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    owner = "${var.owner}"
+    team  = "${var.team}"
+  }
+}
+
 resource "aws_instance" "web" {
   ami           = "${data.aws_ami.amazon-linux-2.id}"
   instance_type = "t2.small"
